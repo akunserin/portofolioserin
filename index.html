@@ -8,10 +8,6 @@
 
 <style>
 
-/* =========================
-   RESET
-========================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -24,11 +20,6 @@ body {
     background: #ffffff;
     color: #292929;
 }
-
-
-/* =========================
-   WARNA
-========================= */
 
 :root {
     --cream: #eee3d5;
@@ -79,7 +70,7 @@ body {
 
 
 /* =========================
-   LAYOUT UTAMA
+   LAYOUT
 ========================= */
 
 .wrapper {
@@ -89,7 +80,7 @@ body {
 
 
 /* =========================
-   SIDEBAR PROFIL
+   SIDEBAR
 ========================= */
 
 .sidebar {
@@ -238,7 +229,7 @@ body {
 
 
 /* =========================
-   KONTEN
+   CONTENT
 ========================= */
 
 .content {
@@ -304,6 +295,8 @@ body {
 }
 
 .btn {
+    display: inline-block;
+
     padding: 14px 28px;
 
     border-radius: 6px;
@@ -559,6 +552,64 @@ body {
 
 
 /* =========================
+   KONTAK
+========================= */
+
+.contact-box {
+    background: var(--cream-light);
+
+    padding: 40px;
+
+    border-radius: 15px;
+
+    line-height: 1.8;
+
+    color: var(--gray);
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 30px rgba(100,80,60,0.06);
+}
+
+.contact-box strong {
+    color: var(--brown-dark);
+
+    font-size: 18px;
+}
+
+.contact-box p {
+    margin: 15px auto 25px;
+
+    max-width: 600px;
+}
+
+.email-button {
+    display: inline-block;
+
+    padding: 15px 28px;
+
+    background: var(--brown);
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.email-button:hover {
+    background: var(--brown-dark);
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================
    FOOTER
 ========================= */
 
@@ -714,18 +765,12 @@ footer {
 
 
 <!-- =========================
-     SIDEBAR
+     SIDEBAR PROFIL
 ========================= -->
 
 <aside class="sidebar">
 
     <div class="profile-card">
-
-        <!--
-        GANTI FOTO:
-        Letakkan foto kamu dengan nama "foto.jpg"
-        di folder yang sama dengan index.html
-        -->
 
         <img
             src="nurserin.jpg.jpg"
@@ -738,12 +783,12 @@ footer {
         <div class="profile-line"></div>
 
         <p class="profile-role">
-            Siswi RPL 
+            Siswi RPL
         </p>
 
         <p class="profile-description">
             Saya adalah seorang siswi yang suka
-            membaca novel,dan mendengar musik K-Pop.
+            membaca novel dan mendengarkan musik K-Pop.
         </p>
 
         <a href="#about" class="profile-button">
@@ -752,13 +797,11 @@ footer {
 
         <div class="social">
 
-            <a href="#" title="Instagram">◎</a>
+            <a href="#contact" title="Email">✉</a>
 
-            <a href="#" title="TikTok">♪</a>
+            <a href="#hobby" title="K-Pop">♥</a>
 
-            <a href="#" title="K-Pop">♥</a>
-
-            <a href="#" title="Email">✉</a>
+            <a href="#education" title="Pendidikan">🎓</a>
 
         </div>
 
@@ -800,7 +843,7 @@ footer {
         </a>
 
         <a href="#contact" class="btn btn-secondary">
-            ✈ Hubungi Saya
+            ✉ Hubungi Saya
         </a>
 
     </div>
@@ -809,7 +852,9 @@ footer {
 
 
 
-<!-- TENTANG SAYA -->
+<!-- =========================
+     TENTANG SAYA
+========================= -->
 
 <section class="section" id="about">
 
@@ -889,9 +934,36 @@ footer {
 
 
     <br><br>
+
+    <div class="about">
+
+        <strong>Tentang Nurserin 🤎</strong>
+
+        <br><br>
+
+        Nama saya <strong>Nurserin</strong>.
+        Saya lahir pada <strong>16 Mei 2009</strong>.
+        Saat ini saya bersekolah di
+        <strong>SMK Negeri 1 Semparuk</strong>
+        dengan jurusan
+        <strong>Rekayasa Perangkat Lunak (RPL)</strong>.
+
+        <br><br>
+
+        Saya memiliki hobi membaca novel dan mendengarkan musik.
+        Saya juga seorang penyuka K-Pop.
+        Saya ingin terus belajar dan mengembangkan kemampuan
+        saya di bidang teknologi.
+
+    </div>
+
 </section>
 
-<!-- HOBI -->
+
+
+<!-- =========================
+     HOBI
+========================= -->
 
 <section class="section" id="hobby">
 
@@ -949,7 +1021,9 @@ footer {
 
 
 
-<!-- PENDIDIKAN -->
+<!-- =========================
+     PENDIDIKAN
+========================= -->
 
 <section class="section" id="education">
 
@@ -983,8 +1057,9 @@ footer {
 
 
 
-
-<!-- CITA-CITA -->
+<!-- =========================
+     CITA-CITA
+========================= -->
 
 <section class="section">
 
@@ -1007,7 +1082,9 @@ footer {
 
 
 
-<!-- KONTAK -->
+<!-- =========================
+     KONTAK / GMAIL
+========================= -->
 
 <section class="section" id="contact">
 
@@ -1015,20 +1092,35 @@ footer {
 
         <span>✉</span>
 
-        <h3>Kontak</h3>
+        <h3>Hubungi Saya</h3>
 
     </div>
 
 
-    <div class="about">
+    <div class="contact-box">
 
-        <strong>Terima kasih sudah berkunjung! 🤎</strong>
+        <strong>
+            Terima kasih sudah berkunjung! 🤎
+        </strong>
 
-        <br><br>
+        <p>
+            Jika ingin menghubungi saya,
+            silakan kirim pesan melalui Gmail
+            dengan menekan tombol di bawah ini.
+        </p>
 
-        Website ini merupakan portofolio pribadi
-        saya sebagai siswi SMK Negeri 1 Semparuk
-        jurusan Rekayasa Perangkat Lunak.
+        <!--
+        GANTI EMAIL DI BAWAH
+        DENGAN ALAMAT GMAIL KAMU
+        -->
+
+        <a
+            href="mailto:serinrpl1@gmail.com"
+            class="email-button"
+        >
+            📧 Hubungi Saya lewat Gmail
+        </a>
+
     </div>
 
 </section>
@@ -1041,7 +1133,9 @@ footer {
 
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
