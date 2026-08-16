@@ -3,15 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Portofolio Nurserin</title>
 
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-
 /* =========================
-   RESET
+   RESET & BASE STYLES
 ========================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -19,734 +21,605 @@
     scroll-behavior: smooth;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #ffffff;
-    color: #292929;
-}
-
-
-/* =========================
-   WARNA
-========================= */
-
 :root {
-    --cream: #eee3d5;
-    --cream-light: #faf6f0;
-    --cream-card: #f8f1e8;
-    --brown: #bd9976;
-    --brown-dark: #725844;
-    --text: #292929;
-    --gray: #66615d;
+    --cream-bg: #FAF6F0;
+    --cream-card: #FFFFFF;
+    --cream-sidebar: #F4ECE1;
+    --brown-accent: #C59B73;
+    --brown-dark: #6E533C;
+    --brown-soft: #EFE4D6;
+    --text-main: #2C2623;
+    --text-muted: #7A726B;
+    --shadow-soft: 0 10px 30px rgba(110, 83, 60, 0.08);
+    --shadow-hover: 0 18px 40px rgba(110, 83, 60, 0.15);
+    --radius-lg: 20px;
+    --radius-md: 14px;
+    --radius-sm: 8px;
 }
 
+body {
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    background: var(--cream-bg);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
 /* =========================
-   NAVBAR
+   NAVBAR (Glassmorphism)
 ========================= */
-
 .navbar {
     position: fixed;
     top: 0;
     right: 0;
-
     width: 62%;
-
-    padding: 25px 50px;
-
-    background: rgba(255,255,255,0.94);
-
+    padding: 20px 50px;
+    background: rgba(250, 246, 240, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     display: flex;
-    justify-content: center;
-
+    justify-content: flex-end;
+    gap: 25px;
     z-index: 1000;
+    border-bottom: 1px solid rgba(197, 155, 115, 0.15);
 }
 
 .navbar a {
     text-decoration: none;
-    color: #333;
-
-    margin: 0 18px;
-
-    font-size: 15px;
-
-    transition: 0.3s;
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
 }
 
 .navbar a:hover {
-    color: var(--brown);
+    color: var(--brown-dark);
+    background: var(--brown-soft);
 }
 
-
 /* =========================
-   LAYOUT
+   LAYOUT WRAPPER
 ========================= */
-
 .wrapper {
     display: flex;
     min-height: 100vh;
 }
 
-
 /* =========================
    SIDEBAR PROFIL
 ========================= */
-
 .sidebar {
     width: 38%;
-
     min-height: 100vh;
-
-    background: var(--cream);
-
-    padding: 80px 40px 30px;
-
+    background: var(--cream-sidebar);
+    padding: 60px 40px 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-
     position: fixed;
     left: 0;
     top: 0;
+    border-right: 1px solid rgba(197, 155, 115, 0.15);
 }
 
 .profile-card {
     width: 100%;
-    max-width: 430px;
-
-    background: #fffaf5;
-
-    border-radius: 8px;
-
-    padding: 55px 35px 0;
-
+    max-width: 400px;
+    background: var(--cream-card);
+    border-radius: var(--radius-lg);
+    padding: 45px 30px 25px;
     text-align: center;
-
-    box-shadow:
-        0 15px 35px rgba(80,60,45,0.13);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transition: transform 0.3s ease;
 }
 
+.profile-photo-wrapper {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 25px;
+}
 
-/* FOTO */
+.profile-photo-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--brown-accent), var(--cream-sidebar));
+    z-index: 0;
+}
 
 .profile-photo {
-    width: 230px;
-    height: 230px;
-
+    position: relative;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-
     object-fit: cover;
-
-    border: 8px solid #eee5da;
-
-    box-shadow:
-        0 5px 20px rgba(0,0,0,0.08);
+    border: 4px solid #fff;
+    z-index: 1;
 }
 
-
-/* NAMA */
-
 .profile-card h1 {
-    font-size: 40px;
-
-    margin-top: 30px;
-
-    letter-spacing: 1px;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
 }
 
 .profile-line {
-    width: 55px;
+    width: 45px;
     height: 4px;
-
-    background: var(--brown);
-
-    margin: 20px auto;
+    background: var(--brown-accent);
+    margin: 15px auto;
+    border-radius: 2px;
 }
 
 .profile-role {
-    color: var(--brown);
-
-    font-size: 18px;
-
-    margin-bottom: 25px;
+    display: inline-block;
+    color: var(--brown-dark);
+    font-size: 14px;
+    font-weight: 700;
+    background: var(--brown-soft);
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
 }
-
-.profile-description {
-    color: var(--gray);
-
-    line-height: 1.7;
-
-    font-size: 15px;
-}
-
-
-/* BUTTON PROFIL */
 
 .profile-button {
-    display: inline-block;
-
-    margin: 28px 0 45px;
-
-    padding: 14px 35px;
-
-    background: var(--brown);
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0 30px;
+    padding: 12px 28px;
+    background: var(--brown-accent);
     color: white;
-
     text-decoration: none;
-
-    border-radius: 5px;
-
-    transition: 0.3s;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 8px 20px rgba(197, 155, 115, 0.3);
+    transition: all 0.3s ease;
 }
 
 .profile-button:hover {
     background: var(--brown-dark);
-
-    transform: translateY(-3px);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(110, 83, 60, 0.3);
 }
 
-
-/* SOCIAL */
-
 .social {
-    border-top: 1px solid #eee2d7;
-
-    padding: 22px;
-
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 20px;
     display: flex;
-
     justify-content: center;
-
-    gap: 30px;
+    gap: 20px;
 }
 
 .social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--cream-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
-
-    font-size: 20px;
-
-    color: #333;
-
-    transition: 0.3s;
+    font-size: 18px;
+    color: var(--text-main);
+    transition: all 0.3s ease;
 }
 
 .social a:hover {
-    color: var(--brown);
-
+    background: var(--brown-accent);
+    color: white;
     transform: translateY(-3px);
 }
 
-
 /* =========================
-   CONTENT
+   MAIN CONTENT AREA
 ========================= */
-
 .content {
     width: 62%;
-
     margin-left: 38%;
-
-    padding: 130px 70px 80px;
+    padding: 120px 60px 80px;
 }
 
-
-/* =========================
-   HERO
-========================= */
-
+/* HERO SECTION */
 .hero {
-    max-width: 800px;
-
-    margin-bottom: 90px;
+    max-width: 750px;
+    margin-bottom: 80px;
+    animation: fadeIn 0.8s ease-out;
 }
 
-.hero-small {
-    color: var(--brown);
-
-    font-size: 19px;
-
-    font-weight: bold;
-
-    margin-bottom: 15px;
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--brown-dark);
+    background: var(--brown-soft);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
 }
 
 .hero h2 {
-    font-size: 70px;
-
-    line-height: 1.05;
-
-    margin-bottom: 25px;
+    font-size: 56px;
+    line-height: 1.15;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
 }
 
 .hero h2 span {
-    color: var(--brown);
+    color: var(--brown-accent);
+    position: relative;
 }
 
 .hero p {
-    color: var(--gray);
-
-    font-size: 18px;
-
+    color: var(--text-muted);
+    font-size: 17px;
     line-height: 1.7;
-
-    max-width: 650px;
+    max-width: 600px;
 }
 
-
-/* BUTTON HERO */
-
 .buttons {
-    margin-top: 30px;
-
+    margin-top: 35px;
     display: flex;
-
     gap: 15px;
 }
 
 .btn {
-    display: inline-block;
-
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 14px 28px;
-
-    border-radius: 6px;
-
+    border-radius: var(--radius-md);
     text-decoration: none;
-
     font-size: 14px;
-
-    transition: 0.3s;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .btn-primary {
-    background: var(--brown);
-
+    background: var(--brown-dark);
     color: white;
+    box-shadow: 0 8px 20px rgba(110, 83, 60, 0.25);
 }
 
 .btn-secondary {
-    border: 1px solid #bbb;
-
-    color: #333;
+    background: white;
+    color: var(--text-main);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-soft);
 }
 
 .btn:hover {
     transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
 }
 
-
-/* =========================
-   SECTION
-========================= */
-
+/* SECTIONS COMMON */
 .section {
-    margin-bottom: 90px;
+    margin-bottom: 80px;
 }
 
 .section-title {
     display: flex;
-
     align-items: center;
-
-    gap: 15px;
-
+    gap: 12px;
     margin-bottom: 30px;
 }
 
-.section-title h3 {
-    font-size: 28px;
-}
-
 .section-title span {
-    font-size: 25px;
+    font-size: 24px;
+    background: var(--brown-soft);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
 }
 
+.section-title h3 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
 
-/* =========================
-   INFO CARDS
-========================= */
-
+/* INFO CARDS (Gird 4 Kolom) */
 .info-grid {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     gap: 15px;
 }
 
 .info-card {
-    background: var(--cream-light);
-
-    border-radius: 12px;
-
-    padding: 25px 18px;
-
+    background: var(--cream-card);
+    border-radius: var(--radius-md);
+    padding: 22px 16px;
     text-align: center;
-
-    transition: 0.3s;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
 }
 
 .info-card:hover {
-    transform: translateY(-7px);
-
-    box-shadow:
-        0 12px 25px rgba(100,80,60,0.1);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--brown-soft);
 }
 
 .info-icon {
-    width: 55px;
-    height: 55px;
-
-    margin: auto;
-
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 12px;
     border-radius: 50%;
-
-    background: #eadcca;
-
+    background: var(--brown-soft);
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
-    font-size: 23px;
+    font-size: 20px;
 }
 
 .info-card h4 {
-    margin-top: 18px;
-
-    margin-bottom: 10px;
-
-    font-size: 15px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
 }
 
 .info-card p {
-    font-size: 13px;
-
-    color: var(--gray);
-
-    line-height: 1.5;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-main);
 }
 
-
-/* =========================
-   TENTANG
-========================= */
-
+/* ABOUT BOX */
 .about {
-    background: var(--cream-light);
-
+    background: var(--cream-card);
     padding: 35px;
-
-    border-radius: 15px;
-
-    line-height: 1.9;
-
-    color: var(--gray);
-
-    font-size: 15px;
+    border-radius: var(--radius-lg);
+    line-height: 1.8;
+    color: var(--text-muted);
+    font-size: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-soft);
 }
 
 .about strong {
     color: var(--brown-dark);
 }
 
-
-/* =========================
-   HOBI
-========================= */
-
+/* HOBI GRID */
 .hobby-grid {
     display: grid;
-
     grid-template-columns: repeat(2, 1fr);
-
     gap: 20px;
 }
 
 .hobby {
     padding: 30px;
-
-    background: var(--cream-light);
-
-    border-radius: 15px;
-
-    transition: 0.3s;
+    background: var(--cream-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
 }
 
 .hobby:hover {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
 }
 
 .hobby-icon {
-    font-size: 35px;
-
+    font-size: 32px;
     margin-bottom: 15px;
 }
 
 .hobby h4 {
-    font-size: 19px;
-
+    font-size: 20px;
+    font-weight: 700;
     margin-bottom: 10px;
 }
 
 .hobby p {
-    color: var(--gray);
-
+    color: var(--text-muted);
     font-size: 14px;
-
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
-
-/* =========================
-   PENDIDIKAN
-========================= */
-
+/* PENDIDIKAN */
 .education-card {
     padding: 30px;
-
-    background: var(--cream-light);
-
-    border-left: 5px solid var(--brown);
-
-    border-radius: 10px;
+    background: var(--cream-card);
+    border-left: 5px solid var(--brown-accent);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
 }
 
 .education-card small {
-    color: var(--brown);
-
-    font-weight: bold;
+    color: var(--brown-accent);
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-size: 12px;
 }
 
 .education-card h4 {
-    font-size: 21px;
-
-    margin: 10px 0;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 8px 0;
 }
 
 .education-card p {
-    color: var(--gray);
-
-    line-height: 1.7;
+    color: var(--text-muted);
+    font-size: 15px;
 }
 
-
-/* =========================
-   YANG SAYA PELAJARI
-========================= */
-
+/* PELAJARAN GRID */
 .learn-grid {
     display: grid;
-
     grid-template-columns: repeat(2, 1fr);
-
     gap: 20px;
 }
 
 .learn-card {
-    background: var(--cream-light);
-
+    background: var(--cream-card);
     padding: 30px;
-
-    border-radius: 15px;
-
-    transition: 0.3s;
-
-    border: 1px solid #eee2d7;
+    border-radius: var(--radius-lg);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-soft);
 }
 
 .learn-card:hover {
-    transform: translateY(-7px);
-
-    box-shadow:
-        0 12px 25px rgba(100,80,60,0.1);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
 }
 
 .learn-icon {
-    width: 55px;
-    height: 55px;
-
-    border-radius: 50%;
-
-    background: #eadcca;
-
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-sm);
+    background: var(--brown-soft);
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
-    font-size: 25px;
-
+    font-size: 22px;
     margin-bottom: 18px;
 }
 
 .learn-card h4 {
     font-size: 18px;
-
-    margin-bottom: 12px;
-
+    font-weight: 700;
+    margin-bottom: 10px;
     color: var(--brown-dark);
 }
 
 .learn-card p {
-    color: var(--gray);
-
+    color: var(--text-muted);
     font-size: 14px;
-
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
-
-/* =========================
-   CITA-CITA
-========================= */
-
+/* CITA CITA BANNER */
 .dream {
-    background: var(--brown-dark);
-
+    background: linear-gradient(135deg, var(--brown-dark), #543E2C);
     color: white;
-
     padding: 50px 40px;
-
-    border-radius: 15px;
-
+    border-radius: var(--radius-lg);
     text-align: center;
+    box-shadow: 0 15px 30px rgba(110, 83, 60, 0.2);
 }
 
 .dream h3 {
-    font-size: 35px;
-
+    font-size: 32px;
+    font-weight: 800;
     margin-bottom: 15px;
 }
 
 .dream p {
-    color: #eadfd6;
-
-    line-height: 1.8;
+    color: var(--brown-soft);
+    font-size: 16px;
+    max-width: 550px;
+    margin: 0 auto;
+    line-height: 1.7;
 }
 
-
-/* =========================
-   KONTAK
-========================= */
-
+/* KONTAK */
 .contact-box {
-    background: var(--cream-light);
-
-    padding: 40px;
-
-    border-radius: 15px;
-
-    line-height: 1.8;
-
-    color: var(--gray);
-
+    background: var(--cream-card);
+    padding: 45px 30px;
+    border-radius: var(--radius-lg);
     text-align: center;
-
-    box-shadow:
-        0 10px 30px rgba(100,80,60,0.06);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .contact-box strong {
     color: var(--brown-dark);
-
-    font-size: 18px;
+    font-size: 20px;
+    display: block;
 }
 
 .contact-box p {
-    margin: 15px auto 25px;
-
-    max-width: 600px;
+    margin: 12px auto 25px;
+    max-width: 500px;
+    color: var(--text-muted);
 }
 
 .email-button {
-    display: inline-block;
-
-    padding: 15px 28px;
-
-    background: var(--brown);
-
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    background: var(--brown-accent);
     color: white;
-
     text-decoration: none;
-
-    border-radius: 6px;
-
-    font-size: 14px;
-
-    transition: 0.3s;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: 0 8px 20px rgba(197, 155, 115, 0.3);
+    transition: all 0.3s ease;
 }
 
 .email-button:hover {
     background: var(--brown-dark);
-
     transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(110, 83, 60, 0.3);
 }
 
-
-/* =========================
-   FOOTER
-========================= */
-
+/* FOOTER */
 footer {
     text-align: center;
-
-    padding: 35px 20px;
-
-    color: #777;
-
+    padding: 30px 20px;
+    color: var(--text-muted);
     font-size: 13px;
-
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+/* ANIMASI */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 /* =========================
-   RESPONSIVE TABLET
+   RESPONSIVE DESIGN
 ========================= */
-
-@media (max-width: 900px) {
-
+@media (max-width: 992px) {
     .navbar {
         width: 100%;
-
-        padding: 20px;
-
         justify-content: center;
-    }
-
-    .navbar a {
-        margin: 0 8px;
-
-        font-size: 12px;
+        padding: 15px;
     }
 
     .wrapper {
-        display: block;
+        flex-direction: column;
     }
 
     .sidebar {
         position: relative;
-
         width: 100%;
-
         min-height: auto;
-
-        padding: 110px 20px 40px;
+        padding: 100px 20px 40px;
     }
 
     .content {
         width: 100%;
-
         margin-left: 0;
-
-        padding: 60px 25px;
+        padding: 50px 25px;
     }
 
     .hero h2 {
-        font-size: 50px;
+        font-size: 42px;
     }
 
     .info-grid {
@@ -754,565 +627,228 @@ footer {
     }
 }
 
-
-/* =========================
-   RESPONSIVE HP
-========================= */
-
 @media (max-width: 600px) {
-
     .navbar {
+        gap: 10px;
         overflow-x: auto;
-
         justify-content: flex-start;
-
+        padding: 12px 20px;
+    }
+    
+    .navbar a {
+        padding: 6px 12px;
+        font-size: 13px;
         white-space: nowrap;
     }
 
-    .profile-card {
-        padding-top: 40px;
-    }
-
-    .profile-photo {
-        width: 190px;
-        height: 190px;
-    }
-
-    .profile-card h1 {
-        font-size: 32px;
-    }
-
     .hero h2 {
-        font-size: 42px;
-    }
-
-    .hero p {
-        font-size: 15px;
+        font-size: 34px;
     }
 
     .buttons {
         flex-direction: column;
     }
 
-    .btn {
-        text-align: center;
-    }
-
-    .info-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .hobby-grid {
+    .info-grid, .hobby-grid, .learn-grid {
         grid-template-columns: 1fr;
-    }
-
-    .learn-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .section-title h3 {
-        font-size: 23px;
-    }
-
-    .dream h3 {
-        font-size: 27px;
     }
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================
-     NAVBAR
-========================= -->
-
+<!-- NAVBAR -->
 <nav class="navbar">
-
     <a href="#home">Beranda</a>
-
-    <a href="#about">Tentang Saya</a>
-
+    <a href="#about">Tentang</a>
     <a href="#hobby">Hobi</a>
-
     <a href="#education">Pendidikan</a>
-
     <a href="#contact">Kontak</a>
-
 </nav>
-
-
 
 <div class="wrapper">
 
-
-<!-- =========================
-     SIDEBAR PROFIL
-========================= -->
-
+<!-- SIDEBAR -->
 <aside class="sidebar">
-
     <div class="profile-card">
-
-        <img
-            src="nurserin.jpg.jpg"
-            alt="Foto Nurserin"
-            class="profile-photo"
-        >
-
+        <div class="profile-photo-wrapper">
+            <img src="serin.jpg.png" alt="Foto Nurserin" class="profile-photo">
+        </div>
         <h1>Nurserin</h1>
-
         <div class="profile-line"></div>
-
-        <p class="profile-role">
-            Siswi RPL
-        </p>
-
+        <p class="profile-role">Siswi RPL</p>
+        
         <a href="#about" class="profile-button">
-            👤 Tentang Saya
+            <span>👤</span> Lihat Profil Lengkap
         </a>
 
         <div class="social">
-
             <a href="#contact" title="Email">✉</a>
-
-            <a href="#hobby" title="K-Pop">♥</a>
-
+            <a href="#hobby" title="Hobi">♥</a>
             <a href="#education" title="Pendidikan">🎓</a>
-
         </div>
-
     </div>
-
 </aside>
 
-
-
-<!-- =========================
-     CONTENT
-========================= -->
-
+<!-- MAIN CONTENT -->
 <main class="content">
 
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-badge">
+            <span>👋</span> Halo, Selamat Datang
+        </div>
+        <h2>Saya <span>Nurserin</span></h2>
+        <p>
+            Selamat datang di protofolio saya.Di sini kamu bisa mengenal saya lebih jauh, mulai dari pendidikan,hobi, hingga cita-cita saya
+        </p>
 
-<!-- =========================
-     HERO
-========================= -->
+        <div class="buttons">
+            <a href="#about" class="btn btn-primary">📄 Lihat Profil</a>
+            <a href="#contact" class="btn btn-secondary">✉ Hubungi Saya</a>
+        </div>
+    </section>
 
-<section class="hero" id="home">
-
-    <p class="hero-small">
-        Halo, 👋
-    </p>
-
-    <h2>
-        Saya <span>Nurserin</span>
-    </h2>
-
-    <p>
-        Selamat datang di portofolio saya.
-        Di sini kamu bisa mengenal saya lebih jauh,
-        mulai dari pendidikan, hobi, hingga cita-cita saya.
-    </p>
-
-    <div class="buttons">
-
-        <a href="#about" class="btn btn-primary">
-            📄 Lihat Profil
-        </a>
-
-        <a href="#contact" class="btn btn-secondary">
-            ✉ Hubungi Saya
-        </a>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     TENTANG SAYA
-========================= -->
-
-<section class="section" id="about">
-
-    <div class="section-title">
-
-        <span>👤</span>
-
-        <h3>Tentang Saya</h3>
-
-    </div>
-
-
-    <div class="info-grid">
-
-
-        <div class="info-card">
-
-            <div class="info-icon">
-                🎂
-            </div>
-
-            <h4>Tanggal Lahir</h4>
-
-            <p>
-                16 Mei 2009
-            </p>
-
+    <!-- TENTANG SAYA -->
+    <section class="section" id="about">
+        <div class="section-title">
+            <span>👤</span>
+            <h3>Tentang Saya</h3>
         </div>
 
-
-        <div class="info-card">
-
-            <div class="info-icon">
-                🏫
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">🎂</div>
+                <h4>Lahir</h4>
+                <p>16 Mei 2009</p>
             </div>
-
-            <h4>Sekolah</h4>
-
-            <p>
-                SMK Negeri 1 Semparuk
-            </p>
-
+            <div class="info-card">
+                <div class="info-icon">🏫</div>
+                <h4>Sekolah</h4>
+                <p>SMKN 1 Semparuk</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">📍</div>
+                <h4>Alamat</h4>
+                <p>Labong Ayu</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">💗</div>
+                <h4>Minat</h4>
+                <p>K-Pop & Novel</p>
+            </div>
         </div>
 
+        <br>
 
-        <div class="info-card">
+        <div class="about">
+            <strong>Tentang Nurserin 🤎</strong>
+            <br><br>
+            Nama saya <strong>Nurserin</strong>, lahir pada tanggal <strong>16 Mei 2009</strong>. Saat ini saya mendalami ilmu pemrograman di <strong>SMK Negeri 1 Semparuk</strong> dengan fokus keahlian <strong>Rekayasa Perangkat Lunak (RPL)</strong>.
+        </div>
+    </section>
 
-    <div class="info-icon">
-        📍
-    </div>
-
-    <h4>Alamat</h4>
-
-    <p>
-        Labong Ayu
-    </p>
-
-</div>
-
-
-        <div class="info-card">
-
-            <div class="info-icon">
-                💗
-            </div>
-
-            <h4>Minat</h4>
-
-            <p>
-                K-Pop & Novel
-            </p>
-
+    <!-- HOBI -->
+    <section class="section" id="hobby">
+        <div class="section-title">
+            <span>♡</span>
+            <h3>Hobi & Minat</h3>
         </div>
 
+        <div class="hobby-grid">
+            <div class="hobby">
+                <div class="hobby-icon">📖</div>
+                <h4>Membaca Novel</h4>
+                <p>Saya suka membaca novel ketika memiliki waktu luang.</p>
+            </div>
+            <div class="hobby">
+                <div class="hobby-icon">🎧</div>
+                <h4>Musik K-Pop</h4>
+                <p>Mendengar musik K-Pop menjadi salah satu kegiatan yang saya sukai ketika sedang santai.</p>
+            </div>
+        </div>
+    </section>
 
-    </div>
+    <!-- PENDIDIKAN -->
+    <section class="section" id="education">
+        <div class="section-title">
+            <span>🎓</span>
+            <h3>Pendidikan</h3>
+        </div>
 
-
-    <br><br>
-
-    <div class="about">
-
-        <strong>Tentang Nurserin 🤎</strong>
+        <div class="education-card">
+            <small>PENDIDIKAN SAAT INI</small>
+            <h4>SMK Negeri 1 Semparuk</h4>
+            <p>
+                Jurusan Rekayasa Perangkat Lunak (RPL). Fokus mempelajari logika pemrograman, pembuatan aplikasi web, dan manajemen basis data.
+            </p>
+        </div>
 
         <br><br>
 
-        Nama saya <strong>Nurserin</strong>.
-        Saya lahir pada <strong>16 Mei 2009</strong>.
-        Saat ini saya bersekolah di
-        <strong>SMK Negeri 1 Semparuk</strong>
-        dengan jurusan
-        <strong>Rekayasa Perangkat Lunak (RPL)</strong>.
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     HOBI
-========================= -->
-
-<section class="section" id="hobby">
-
-    <div class="section-title">
-
-        <span>♡</span>
-
-        <h3>Hobi & Kesukaan</h3>
-
-    </div>
-
-
-    <div class="hobby-grid">
-
-
-        <div class="hobby">
-
-            <div class="hobby-icon">
-                📖
-            </div>
-
-            <h4>Membaca Novel</h4>
-
-            <p>
-                Saya suka membaca novel ketika
-                memiliki waktu luang. Membaca membuat
-                saya bisa menikmati berbagai cerita
-                dan dunia imajinasi.
-            </p>
-
+        <div class="section-title">
+            <span>📚</span>
+            <h3>Keahlian yang Dipelajari</h3>
         </div>
 
-
-        <div class="hobby">
-
-            <div class="hobby-icon">
-                🎧
+        <div class="learn-grid">
+            <div class="learn-card">
+                <div class="learn-icon">💻</div>
+                <h4>Dasar Pemrograman</h4>
+                <p>Memahami logika dasar, alur algoritma, struktur data, dan variabel pemrograman.</p>
             </div>
+            <div class="learn-card">
+                <div class="learn-icon">🌐</div>
+                <h4>Pembuatan Website</h4>
+                <p>Mengembangkan struktur & tampilan web yang responsif menggunakan HTML & CSS.</p>
+            </div>
+            <div class="learn-card">
+                <div class="learn-icon">☕</div>
+                <h4>Pemrograman Java</h4>
+                <p>Mempelajari sintaks Java, GUI (AWT & Swing), dan pemrograman berbasis objek.</p>
+            </div>
+            <div class="learn-card">
+                <div class="learn-icon">🗄️</div>
+                <h4>Database & JDBC</h4>
+                <p>Mengelola basis data serta mengintegrasikannya dengan aplikasi lewat JDBC.</p>
+            </div>
+        </div>
+    </section>
 
-            <h4>K-Pop</h4>
-
+    <!-- CITA-CITA -->
+    <section class="section">
+        <div class="dream">
+            <h3>✨ Cita-Cita Saya</h3>
             <p>
-                Saya juga seorang penyuka K-Pop.
-                Mendengarkan musik K-Pop menjadi salah
-                satu kegiatan yang saya sukai ketika
-                sedang santai.
+                Ingin menjadi profesional di bidang teknologi yang terus berkembang, berinovasi, dan memberikan dampak positif bagi lingkungan sekitar.
             </p>
+        </div>
+    </section>
 
+    <!-- KONTAK -->
+    <section class="section" id="contact">
+        <div class="section-title">
+            <span>✉</span>
+            <h3>Hubungi Saya</h3>
         </div>
 
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     PENDIDIKAN
-========================= -->
-
-<section class="section" id="education">
-
-    <div class="section-title">
-
-        <span>🎓</span>
-
-        <h3>Pendidikan</h3>
-
-    </div>
-
-
-    <div class="education-card">
-
-        <small>SAAT INI</small>
-
-        <h4>
-            SMK Negeri 1 Semparuk
-        </h4>
-
-        <p>
-            Jurusan Rekayasa Perangkat Lunak (RPL).
-            Selama bersekolah di SMK, saya mempelajari
-            berbagai ilmu dan keterampilan di bidang
-            teknologi, pemrograman, dan pengembangan
-            perangkat lunak.
-        </p>
-
-    </div>
-
-
-    <br><br>
-
-
-    <!-- YANG SAYA PELAJARI -->
-
-    <div class="section-title">
-
-        <span>📚</span>
-
-        <h3>Yang Saya Pelajari di Sekolah</h3>
-
-    </div>
-
-
-    <div class="learn-grid">
-
-
-        <!-- PEMROGRAMAN -->
-
-        <div class="learn-card">
-
-            <div class="learn-icon">
-                💻
-            </div>
-
-            <h4>Dasar Pemrograman</h4>
-
-            <p>
-                Saya mempelajari dasar-dasar pemrograman,
-                seperti variabel, tipe data, operator,
-                logika, dan cara menyusun kode program.
-            </p>
-
+        <div class="contact-box">
+            <strong>Terima kasih sudah berkunjung! 🤎</strong>
+            <p> Jika ingin menghubungi saya,silakan kirim pesan melalui Gmail dengan menekan tombol di bawah ini</p>
+            <a href="mailto:serinrpl1@gmail.com" class="email-button">
+                📧 Kirim Email
+            </a>
         </div>
-
-
-        <!-- WEBSITE -->
-
-        <div class="learn-card">
-
-            <div class="learn-icon">
-                🌐
-            </div>
-
-            <h4>Pembuatan Website</h4>
-
-            <p>
-                Saya mempelajari HTML dan CSS untuk membuat
-                serta mendesain website agar terlihat
-                rapi, menarik, dan mudah digunakan.
-            </p>
-
-        </div>
-
-
-        <!-- JAVA -->
-
-        <div class="learn-card">
-
-            <div class="learn-icon">
-                ☕
-            </div>
-
-            <h4>Java</h4>
-
-            <p>
-                Saya mempelajari dasar pemrograman Java,
-                variabel, Java AWT, komponen Swing,
-                serta struktur dasar program Java.
-            </p>
-
-        </div>
-
-
-        <!-- DATABASE -->
-
-        <div class="learn-card">
-
-            <div class="learn-icon">
-                🗄️
-            </div>
-
-            <h4>Database</h4>
-
-            <p>
-                Saya mempelajari database dan JDBC,
-                serta bagaimana menghubungkan program
-                dengan database untuk mengelola data.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     CITA-CITA
-========================= -->
-
-<section class="section">
-
-    <div class="dream">
-
-        <h3>
-            ✨ Cita-Cita Saya
-        </h3>
-
-        <p>
-            Saya ingin menjadi seseorang yang sukses.
-            Saya ingin terus belajar, berkembang,
-            dan berusaha untuk mencapai impian saya
-            di masa depan.
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     KONTAK
-========================= -->
-
-<section class="section" id="contact">
-
-    <div class="section-title">
-
-        <span>✉</span>
-
-        <h3>Hubungi Saya</h3>
-
-    </div>
-
-
-    <div class="contact-box">
-
-        <strong>
-            Terima kasih sudah berkunjung! 🤎
-        </strong>
-
-        <p>
-            Jika ingin menghubungi saya,
-            silakan kirim pesan melalui Gmail
-            dengan menekan tombol di bawah ini.
-        </p>
-
-
-        <!--
-        GANTI EMAIL DI BAWAH
-        DENGAN ALAMAT GMAIL KAMU
-        -->
-
-        <a
-    href="mailto:serinrpl1@gmail.com"
-    class="email-button"
->
-    📧 Hubungi Saya lewat Gmail
-</a>
-
-    </div>
-
-</section>
-
-
+    </section>
 
 </main>
-
 </div>
-<!-- =========================
-     FOOTER
-========================= -->
 
+<!-- FOOTER -->
 <footer>
-
     © 2026 Nurserin • Personal Portfolio
-
 </footer>
-
 
 </body>
 </html>
